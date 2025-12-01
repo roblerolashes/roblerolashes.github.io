@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fey Roblero Estudio - Belleza y Estilo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Variables de Color basadas en la marca --- */
+        :root {
+            --color-primary: #f7d5d5; /* Rosa suave del fondo */
+            --color-secondary: #e0c0c0; /* Un tono más oscuro para acentos */
+            --color-text-dark: #1a1a1a; /* Negro suave para texto */
+            --color-text-light: #ffffff;
+            --color-bg-light: #fafafa;
+            --font-heading: 'Cinzel Decorative', cursive;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        /* --- Reset y Estilos Generales --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-dark);
+            background-color: var(--color-bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Títulos de sección */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-primary);
+        }
+
+        /* --- Header y Navegación --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--color-text-dark);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            letter-spacing: 3px;
+            text-align: right;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--color-secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section (Bienvenidos) --- */
+        #hero {
+            margin-top: 80px; /* Compensar header fijo */
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #ffffff 60%);
+            overflow: hidden;
+        }
+
+        /* Decoración de fondo tipo ola */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23f7d5d5" fill-opacity="0.5" d="M0,192L60,170.7C120,149,240,107,360,112C480,117,600,171,720,197.3C840,224,960,224,1080,197.3C1200,171,1320,117,1380,90.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-left: 50px;
+        }
+
+        .hero-text h2.vertical-bienvenidos {
+            font-size: 5rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            color: rgba(0,0,0,0.1);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--color-text-dark);
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-image-collage {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 15px;
+            padding-right: 50px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .hero-img:hover { transform: scale(1.02); }
+        .hero-img.tall { grid-row: span 2; }
+
+        /* --- Servicios (Carrusel Moderno) --- */
+        #servicios {
+            background-color: #fff;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .carousel-card {
+            min-width: 300px;
+            flex: 0 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .carousel-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .carousel-card h3 {
+            padding: 20px 10px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-text-dark);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .carousel-btn {
+            background-color: var(--color-primary);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-text-dark);
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--color-secondary);
+        }
+
+        /* --- Sección Agendar --- */
+        #agendar {
+            background-color: var(--color-bg-light);
+            text-align: center;
+        }
+
+        .embed-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            min-height: 600px; /* Altura mínima para el widget */
+            /* Esto es un placeholder visual, el iframe real tomará su lugar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed var(--color-secondary);
+        }
+        
+        .embed-placeholder-text {
+             color: #999;
+             font-style: italic;
+        }
+
+        /* --- Ubicación y Croquis --- */
+        #ubicacion {
+            background-color: #fff;
+        }
+
+        .location-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .details-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background: linear-gradient(to right, var(--color-primary), #fff);
+            border-radius: 12px;
+        }
+
+        .details-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            color: var(--color-text-dark);
+            font-size: 1.3rem;
+            margin-top: 4px;
+        }
+
+        .croquis-box {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid var(--color-text-dark);
+        }
+        
+        /* Estilo de croquis dibujado a mano con SVG inline */
+        .croquis-svg {
+            width: 100%;
+            height: 100%;
+            background-color: #fdfdfd;
+        }
+        .croquis-path {
+            fill: none;
+            stroke: #444;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 10, 5; /* Efecto de línea punteada/dibujada */
+        }
+        .croquis-calle {
+             font-family: 'Montserrat', sans-serif;
+             font-weight: bold;
+             fill: #444;
+             font-size: 14px;
+        }
+        .croquis-marker {
+            fill: var(--color-primary);
+            stroke: var(--color-text-dark);
+            stroke-width: 2;
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--color-text-dark);
+            color: #aaa;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--color-primary);
+            color: var(--color-text-dark);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b358;
+        }
+
+
+        /* --- Media Queries (Responsivo) --- */
+        @media (max-width: 968px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                padding-left: 0;
+                padding-top: 50px;
+            }
+            .hero-text h2.vertical-bienvenidos {
+                display: none; /* Ocultar en móvil porque rompe el layout */
+            }
+            .hero-image-collage {
+                padding-right: 0;
+                width: 100%;
+                grid-template-rows: repeat(2, 200px);
+            }
+            
+            nav ul {
+                display: none; /* Ocultar menú desktop */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            nav ul.active {
+                display: flex; /* Mostrar al hacer click */
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+             .location-container {
+                 flex-direction: column;
+             }
+             .croquis-box, .details-box {
+                 width: 100%;
+             }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <h1>Fey Roblero</h1>
+            <span>ESTUDIO</span>
+        </a>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#agendar">Agendar Cita</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="vertical-bienvenidos">Bienvenidos</h2>
+                <h1>Realza tu belleza natural</h1>
+                <p>Tu espacio exclusivo para el cuidado de pestañas, cejas, cabello y maquillaje profesional. Déjate consentir por expertas.</p>
+                <a href="#agendar" class="btn-primary">Reserva tu Cita</a>
+            </div>
+            
+            <div class="hero-image-collage">
+                <img src="https://scontent.cdninstagram.com/v/t39.30808-6/469220695_17947406861875791_5328313797930598364_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzIwNTc5ODY1OTE4NjQwNzUyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=o-mhjY1UZOAQ7kNvwGJxXk9&_nc_oc=Adl47QL5Zqc1u1zVWK0kifpNdtVNWCDKSbhTFdqjWFvKQ4nE-FsAZVQXvV87HuCLfMefZBI-NEvZb8_D8XUFx6M5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=UtQCTDyCBNA-ZFE_Fia8Cg&oh=00_AfislDRtQ6XvsO2BNkByw8_i-1MgaI4uwdCB3brUFWWb0g&oe=6932CBD8" alt="Extensiones de Cabello" class="hero-img tall">
+                <img src="https://scontent.cdninstagram.com/v/t51.82787-15/542221666_17977118834875791_3850825668200475640_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzcxNTQ4MDE4ODQyNDYyODU5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ5Ny5zZHIuQzMifQ%3D%3D&_nc_ohc=e-IntZAAx-0Q7kNvwEls8CF&_nc_oc=AdlOCVulMTq2YZIS46iNIqawrLamNWCKlDxt0GCHAXK9FyXCWhUQ8-H9kotQmsXETr8DGLkon0rOGJyZXUG06SIa&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=9g-nEFzfo0p1IIHIx6K3zg&oh=00_AfjDz6rVSIGLZvDcbpBmqTwdfr4POLOzYAc0vSdcPukMOA&oe=69329D78" alt="Extensiones de Pestañas" class="hero-img">
+                <img src="https://instagram.ftgz3-1.fna.fbcdn.net/v/t51.29350-15/439632325_769059125436773_6885865410355111458_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjE0NDB4MTgwMC5zZHIuZjI5MzUwLmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.ftgz3-1.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2QGQySc4Q-02f1nMQTWDJi6NdGBp4-dsS5DQFTZ7XfE4vXkxiqznEq3avreI2jf6z86uwJP-TYF_S5FhiPkh1-1b&_nc_ohc=WyAh1Pf_OusQ7kNvwGF7Oyk&_nc_gid=9zphCbcNO20AnAbvkONaWw&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzM1NDE2Njc5MjkxNzY0NDU1MQ%3D%3D.3-ccb7-5&oh=00_AfgBE4YDdTSD4igOzE2FkiQz90lUA5TQFgASrPgW9gpXiw&oe=6932AC52&_nc_sid=10d13b" alt="Maquillaje Social" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-card">
+                    <img src="https://scontent.cdninstagram.com/v/t51.75761-15/487403632_17960362697875791_7054217276316895271_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzYwMDEwNTA3NTI2NDM4OTUxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTY4NC5zZHIuQzMifQ%3D%3D&_nc_ohc=iOCx1yCK91UQ7kNvwEaSHxX&_nc_oc=AdlcH4Td1POCLyE9mefQRQpiA01F5QkkNATGg6JOGkXpRVYnVAGiL3xg4RDPkMwpDAx8-5lWZTp8XB4wR5K25U4F&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=UMX_B24x6-8xydOZI0tZmQ&oh=00_AfjdARmt-4biyWqYIGy7sfYn_0kj0ghgQII8yx7OUdLOQQ&oe=6932C832" alt="Extensiones de Pestañas">
+                    <h3>Extensiones de Pestañas</h3>
+                </div>
+                <div class="carousel-card">
+                    <img src="https://placehold.co/400x300/e0c0c0/1a1a1a?text=Faciales" alt="Limpiezas Faciales">
+                    <h3>Limpiezas Faciales</h3>
+                </div>
+                <div class="carousel-card">
+                    <img src="https://instagram.ftgz3-1.fna.fbcdn.net/v/t51.29350-15/439557314_1821246668341949_6557998283604963583_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjE0NDB4MTgwMC5zZHIuZjI5MzUwLmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.ftgz3-1.fna.fbcdn.net&_nc_cat=105&_nc_oc=Q6cZ2QGzSPNGa5PdhXgvddaJChU5Qa1aeGaWfFdgsyyIEHIWfA9QYTA3yJm2kTUpJg4ayzrsVE5jX-v6sFuDIRhpo4cp&_nc_ohc=MQV2q24AofMQ7kNvwGseNfO&_nc_gid=dHXWTKy2w2OsB0S9bnEZGA&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzM1NDE2NTc4MjIzMzAxNzIwMA%3D%3D.3-ccb7-5&oh=00_AfhM96h0WVqjCLysKnO73cb5_W3Q-WNKS_z65D9vd1ICJA&oe=6932B133&_nc_sid=10d13b" alt="Maquillaje y Peinado">
+                    <h3>Maquillaje y Peinado<br><small>(Social, Novias, XV años)</small></h3>
+                </div>
+                 <div class="carousel-card">
+                    <img src="" alt="Extensiones de Cabello">
+                    <h3>Extensiones de Cabello</h3>
+                </div>
+                 <div class="carousel-card">
+                    <img src="" alt="Keratinas">
+                    <h3>Keratinas y Tratamientos</h3>
+                </div>
+                 <div class="carousel-card">
+                    <img src="" alt="Laminado de Cejas">
+                    <h3>Laminado de Cejas</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-nav">
+            <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section id="agendar">
+        <h2 class="section-title">Agenda tu Cita</h2>
+		<div class="calendar-container">
+			<h3>Consulta nuestra disponibilidad y llámanos para agendar</h3>
+			<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FMexico_City&showPrint=0&showNav=0&showTabs=0&showTz=0&src=MTRiNTA0Yzk0NGIyYzZjNDcyNDg3NTlmZWM3MTYyNzg0M2QzNWU5NGYyMGNmNjVlM2MyZTQ5NDMxY2ZjNTk5OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23f6bf26" style="border:solid 1px #777; border-radius:10px; background-color: transparent;" width="800" height="600" frameborder="5" scrolling="no"></iframe>
+		</div>
+		<div class="call-to-action">
+			<p>¿Ves un espacio libre?</p>
+			<a href="tel:+529611154021">📞 Llamar para reservar</a>
+		</div>
+    </section>
+
+    <section id="ubicacion">
+        <h2 class="section-title">Visítanos</h2>
+        <div class="location-container">
+            <div class="details-box">
+                <h3>Información de Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Av. Del Rosario 488 C, Col. Santa Ana,<br>Tuxtla Gutiérrez, Chiapas, CP 2900,<br>México.</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>9611154021</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>roblerolashes@gmail.com</p>
+                </div>
+                <a href="https://maps.app.goo.gl/TwsYA6jaVgCGtsiq8" target="_blank" class="btn-primary" style="margin-top: 20px; width: 100%; text-align: center;">Ver en Google Maps</a>
+            </div>
+
+            <div class="croquis-box">
+                <svg class="croquis-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#f8f8f0"/>
+                    
+                    <path class="croquis-path" d="M200,0 L200,400" />
+                    <text x="190" y="50" class="croquis-calle" transform="rotate(90 210,50)">C. Pino Suarez</text>
+                    
+                    <path class="croquis-path" d="M0,150 L400,150" />
+                    <text x="20" y="140" class="croquis-calle">Av. Del Rosario</text>
+                    
+                    <path class="croquis-path" d="M0,280 L400,280" stroke-width="4" />
+                    <text x="250" y="270" class="croquis-calle">Av. 9a Sur</text>
+
+                     <rect x="120" y="220" width="80" height="60" fill="none" stroke="#666" stroke-dasharray="5,5"/>
+                    <text x="125" y="244" fill="#555" font-size="12">Restaurante</text>
+					<text x="125" y="257" fill="#555" font-size="12">Triunfo</text>
+					<text x="125" y="270" fill="#555" font-size="12">Oaxaqueño.</text>
+                    
+                    <circle cx="280" cy="130" r="15" class="croquis-marker" />
+                    
+                    <rect x="250" y="70" width="140" height="35" rx="5" fill="#fff" stroke="#1a1a1a"/>
+                    <text x="255" y="85" font-family="Cinzel Decorative" font-weight="bold" font-size="14">Fey Roblero</text>
+                    <text x="255" y="98" font-size="10" font-family="Montserrat">#488 C</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/529611234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="footer-logo">Fey Roblero Estudio</div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/feyroblero_lashestuxtla/?igsh=MW5hOGFkZzZoZ3FsaA%3D%3D" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100088026612606" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@feyroblerolashes" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=5219611154021&text=Me%20encantaria%20hacer%20una%20cita%20con%20ustedes%0AMi%20nombre%20es%3A%0APara%20el%20dia%20y%20hora%3A%0A%0A(Si%20gustas%20informacion%20solo%20coloca%20tu%20nombre%20y%20deja%20en%20blanco%20dia%20y%20hora)" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2025 Fey Roblero Estudio. Todos los derechos reservados.</p>
+    </footer>
+
+
+    <script>
+        // --- Funcionalidad del Menú Móvil ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+
+        // --- Funcionalidad del Carrusel de Servicios ---
+        const track = document.getElementById('carouselTrack');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        
+        // Configuración básica
+        let scrollAmount = 0;
+        const cardWidth = 320; // Ancho de tarjeta + gap aproximado
+        
+        nextBtn.addEventListener('click', () => {
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            scrollAmount += cardWidth;
+            if (scrollAmount > maxScroll) {
+                scrollAmount = maxScroll;
+            }
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+        });
+
+        prevBtn.addEventListener('click', () => {
+            scrollAmount -= cardWidth;
+            if (scrollAmount < 0) {
+                scrollAmount = 0;
+            }
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+        });
+
+        // Ajustar carrusel al cambiar tamaño de ventana
+        window.addEventListener('resize', () => {
+             scrollAmount = 0;
+             track.style.transform = `translateX(0px)`;
+        });
+
+    </script>
+</body>
+</html>
